@@ -70,7 +70,7 @@ class Generator(nn.Module):
             x = x.cuda()
         h, c = self.init_hidden(batch_size)
         samples = []
-        if flag:
+        if flag: # i.e., x = Variable(torch.zeros((batch_size, 1)).long())
             for i in range(seq_len):
                 output, h, c = self.step(x, h, c)
                 x = output.multinomial(1)
